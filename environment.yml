@@ -1,0 +1,6 @@
+name: python_notebook
+channels:
+  - conda-forge
+dependencies:
+  - numpy
+  - pandas
