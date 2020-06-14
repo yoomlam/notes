@@ -10,6 +10,7 @@ https://mybinder.org/v2/gh/yoomlam/notes/master?filepath=python_notebook/doc_typ
 
 ## To run locally
 ```
-docker run -i -t -p 8888:8888 continuumio/anaconda3 /bin/bash -c "/opt/conda/bin/conda install jupyter -y --quiet && mkdir /opt/notebooks && /opt/conda/bin/jupyter notebook --notebook-dir=/opt/notebooks --ip='*' --port=8888 --no-browser"
+docker run -p 8888:8888 -v `pwd`:/home/jovyan/on_host jupyter/scipy-notebook
 ```
+See https://jupyter-docker-stacks.readthedocs.io/en/latest/
 
