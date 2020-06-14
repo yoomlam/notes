@@ -1,4 +1,4 @@
-name: base
+name: python_notebook
 channels:
   - conda-forge
 dependencies:
