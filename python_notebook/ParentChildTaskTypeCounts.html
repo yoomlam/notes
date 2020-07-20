@@ -1,7 +1,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<script type="text/javascript" src="./js_libs/vis-network.min.js"> </script>
 
 <!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
 <script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
@@ -17,11 +17,11 @@
             float: left;
         }
 
-        
 
-        
 
-        
+
+
+
 </style>
 
 </head>
@@ -35,16 +35,16 @@
     // initialize global variables.
     var edges;
     var nodes;
-    var network; 
+    var network;
     var container;
     var options, data;
 
-    
+
     // This method is responsible for drawing the graph, returns the drawn network
     function drawGraph() {
         var container = document.getElementById('mynetwork');
-        
-        
+
+
 
         // parsing and collecting nodes and edges from the python
         nodes = new vis.DataSet([{"id": "AbstractMotionToVacateTask", "label": "AbstractMotionToVacateTask", "shape": "dot", "title": "AbstractMotionToVacateTask"}, {"id": "VacateMotionMailTask", "label": "VacateMotionMailTask", "shape": "dot", "title": "VacateMotionMailTask"}, {"id": "AddressChangeMailTask", "label": "AddressChangeMailTask", "shape": "dot", "title": "AddressChangeMailTask"}, {"id": "RootTask", "label": "RootTask", "shape": "dot", "title": "RootTask"}, {"id": "AddressVerificationColocatedTask", "label": "AddressVerificationColocatedTask", "shape": "dot", "title": "AddressVerificationColocatedTask"}, {"id": "AttorneyTask", "label": "AttorneyTask", "shape": "dot", "title": "AttorneyTask"}, {"id": "JudgeAssignTask", "label": "JudgeAssignTask", "shape": "dot", "title": "JudgeAssignTask"}, {"id": "AodMotionMailTask", "label": "AodMotionMailTask", "shape": "dot", "title": "AodMotionMailTask"}, {"id": "AojColocatedTask", "label": "AojColocatedTask", "shape": "dot", "title": "AojColocatedTask"}, {"id": "AttorneyRewriteTask", "label": "AttorneyRewriteTask", "shape": "dot", "title": "AttorneyRewriteTask"}, {"id": "AppealWithdrawalMailTask", "label": "AppealWithdrawalMailTask", "shape": "dot", "title": "AppealWithdrawalMailTask"}, {"id": "ArnesonColocatedTask", "label": "ArnesonColocatedTask", "shape": "dot", "title": "ArnesonColocatedTask"}, {"id": "AssignHearingDispositionTask", "label": "AssignHearingDispositionTask", "shape": "dot", "title": "AssignHearingDispositionTask"}, {"id": "HearingTask", "label": "HearingTask", "shape": "dot", "title": "HearingTask"}, {"id": "AttorneyDispatchReturnTask", "label": "AttorneyDispatchReturnTask", "shape": "dot", "title": "AttorneyDispatchReturnTask"}, {"id": "JudgeDispatchReturnTask", "label": "JudgeDispatchReturnTask", "shape": "dot", "title": "JudgeDispatchReturnTask"}, {"id": "AttorneyQualityReviewTask", "label": "AttorneyQualityReviewTask", "shape": "dot", "title": "AttorneyQualityReviewTask"}, {"id": "JudgeQualityReviewTask", "label": "JudgeQualityReviewTask", "shape": "dot", "title": "JudgeQualityReviewTask"}, {"id": "JudgeDecisionReviewTask", "label": "JudgeDecisionReviewTask", "shape": "dot", "title": "JudgeDecisionReviewTask"}, {"id": "BvaDispatchTask", "label": "BvaDispatchTask", "shape": "dot", "title": "BvaDispatchTask"}, {"id": "ChangeHearingDispositionTask", "label": "ChangeHearingDispositionTask", "shape": "dot", "title": "ChangeHearingDispositionTask"}, {"id": "ClearAndUnmistakeableErrorMailTask", "label": "ClearAndUnmistakeableErrorMailTask", "shape": "dot", "title": "ClearAndUnmistakeableErrorMailTask"}, {"id": "CongressionalInterestMailTask", "label": "CongressionalInterestMailTask", "shape": "dot", "title": "CongressionalInterestMailTask"}, {"id": "DistributionTask", "label": "DistributionTask", "shape": "dot", "title": "DistributionTask"}, {"id": "ControlledCorrespondenceMailTask", "label": "ControlledCorrespondenceMailTask", "shape": "dot", "title": "ControlledCorrespondenceMailTask"}, {"id": "DeathCertificateMailTask", "label": "DeathCertificateMailTask", "shape": "dot", "title": "DeathCertificateMailTask"}, {"id": "DeniedMotionToVacateTask", "label": "DeniedMotionToVacateTask", "shape": "dot", "title": "DeniedMotionToVacateTask"}, {"id": "EvidenceOrArgumentMailTask", "label": "EvidenceOrArgumentMailTask", "shape": "dot", "title": "EvidenceOrArgumentMailTask"}, {"id": "EvidenceSubmissionWindowTask", "label": "EvidenceSubmissionWindowTask", "shape": "dot", "title": "EvidenceSubmissionWindowTask"}, {"id": "ExtensionColocatedTask", "label": "ExtensionColocatedTask", "shape": "dot", "title": "ExtensionColocatedTask"}, {"id": "ExtensionRequestMailTask", "label": "ExtensionRequestMailTask", "shape": "dot", "title": "ExtensionRequestMailTask"}, {"id": "FoiaColocatedTask", "label": "FoiaColocatedTask", "shape": "dot", "title": "FoiaColocatedTask"}, {"id": "FoiaRequestMailTask", "label": "FoiaRequestMailTask", "shape": "dot", "title": "FoiaRequestMailTask"}, {"id": "FoiaTask", "label": "FoiaTask", "shape": "dot", "title": "FoiaTask"}, {"id": "HearingAdminActionContestedClaimantTask", "label": "HearingAdminActionContestedClaimantTask", "shape": "dot", "title": "HearingAdminActionContestedClaimantTask"}, {"id": "ScheduleHearingTask", "label": "ScheduleHearingTask", "shape": "dot", "title": "ScheduleHearingTask"}, {"id": "HearingAdminActionFoiaPrivacyRequestTask", "label": "HearingAdminActionFoiaPrivacyRequestTask", "shape": "dot", "title": "HearingAdminActionFoiaPrivacyRequestTask"}, {"id": "HearingAdminActionForeignVeteranCaseTask", "label": "HearingAdminActionForeignVeteranCaseTask", "shape": "dot", "title": "HearingAdminActionForeignVeteranCaseTask"}, {"id": "HearingAdminActionIncarceratedVeteranTask", "label": "HearingAdminActionIncarceratedVeteranTask", "shape": "dot", "title": "HearingAdminActionIncarceratedVeteranTask"}, {"id": "HearingAdminActionMissingFormsTask", "label": "HearingAdminActionMissingFormsTask", "shape": "dot", "title": "HearingAdminActionMissingFormsTask"}, {"id": "HearingAdminActionOtherTask", "label": "HearingAdminActionOtherTask", "shape": "dot", "title": "HearingAdminActionOtherTask"}, {"id": "HearingAdminActionVerifyAddressTask", "label": "HearingAdminActionVerifyAddressTask", "shape": "dot", "title": "HearingAdminActionVerifyAddressTask"}, {"id": "HearingAdminActionVerifyPoaTask", "label": "HearingAdminActionVerifyPoaTask", "shape": "dot", "title": "HearingAdminActionVerifyPoaTask"}, {"id": "HearingClarificationColocatedTask", "label": "HearingClarificationColocatedTask", "shape": "dot", "title": "HearingClarificationColocatedTask"}, {"id": "HearingRelatedMailTask", "label": "HearingRelatedMailTask", "shape": "dot", "title": "HearingRelatedMailTask"}, {"id": "IhpColocatedTask", "label": "IhpColocatedTask", "shape": "dot", "title": "IhpColocatedTask"}, {"id": "InformalHearingPresentationTask", "label": "InformalHearingPresentationTask", "shape": "dot", "title": "InformalHearingPresentationTask"}, {"id": "JudgeAddressMotionToVacateTask", "label": "JudgeAddressMotionToVacateTask", "shape": "dot", "title": "JudgeAddressMotionToVacateTask"}, {"id": "QualityReviewTask", "label": "QualityReviewTask", "shape": "dot", "title": "QualityReviewTask"}, {"id": "MissingHearingTranscriptsColocatedTask", "label": "MissingHearingTranscriptsColocatedTask", "shape": "dot", "title": "MissingHearingTranscriptsColocatedTask"}, {"id": "MissingRecordsColocatedTask", "label": "MissingRecordsColocatedTask", "shape": "dot", "title": "MissingRecordsColocatedTask"}, {"id": "NewRepArgumentsColocatedTask", "label": "NewRepArgumentsColocatedTask", "shape": "dot", "title": "NewRepArgumentsColocatedTask"}, {"id": "NoShowHearingTask", "label": "NoShowHearingTask", "shape": "dot", "title": "NoShowHearingTask"}, {"id": "OtherColocatedTask", "label": "OtherColocatedTask", "shape": "dot", "title": "OtherColocatedTask"}, {"id": "OtherMotionMailTask", "label": "OtherMotionMailTask", "shape": "dot", "title": "OtherMotionMailTask"}, {"id": "PendingScanningVbmsColocatedTask", "label": "PendingScanningVbmsColocatedTask", "shape": "dot", "title": "PendingScanningVbmsColocatedTask"}, {"id": "PoaClarificationColocatedTask", "label": "PoaClarificationColocatedTask", "shape": "dot", "title": "PoaClarificationColocatedTask"}, {"id": "PowerOfAttorneyRelatedMailTask", "label": "PowerOfAttorneyRelatedMailTask", "shape": "dot", "title": "PowerOfAttorneyRelatedMailTask"}, {"id": "PreRoutingFoiaColocatedTask", "label": "PreRoutingFoiaColocatedTask", "shape": "dot", "title": "PreRoutingFoiaColocatedTask"}, {"id": "PreRoutingMissingHearingTranscriptsColocatedTask", "label": "PreRoutingMissingHearingTranscriptsColocatedTask", "shape": "dot", "title": "PreRoutingMissingHearingTranscriptsColocatedTask"}, {"id": "PreRoutingTranslationColocatedTask", "label": "PreRoutingTranslationColocatedTask", "shape": "dot", "title": "PreRoutingTranslationColocatedTask"}, {"id": "PrivacyActRequestMailTask", "label": "PrivacyActRequestMailTask", "shape": "dot", "title": "PrivacyActRequestMailTask"}, {"id": "PrivacyActTask", "label": "PrivacyActTask", "shape": "dot", "title": "PrivacyActTask"}, {"id": "StayedAppealColocatedTask", "label": "StayedAppealColocatedTask", "shape": "dot", "title": "StayedAppealColocatedTask"}, {"id": "PulacCerulloTask", "label": "PulacCerulloTask", "shape": "dot", "title": "PulacCerulloTask"}, {"id": "ReconsiderationMotionMailTask", "label": "ReconsiderationMotionMailTask", "shape": "dot", "title": "ReconsiderationMotionMailTask"}, {"id": "RetiredVljColocatedTask", "label": "RetiredVljColocatedTask", "shape": "dot", "title": "RetiredVljColocatedTask"}, {"id": "ReturnedUndeliverableCorrespondenceMailTask", "label": "ReturnedUndeliverableCorrespondenceMailTask", "shape": "dot", "title": "ReturnedUndeliverableCorrespondenceMailTask"}, {"id": "ScheduleHearingColocatedTask", "label": "ScheduleHearingColocatedTask", "shape": "dot", "title": "ScheduleHearingColocatedTask"}, {"id": "SpecialCaseMovementTask", "label": "SpecialCaseMovementTask", "shape": "dot", "title": "SpecialCaseMovementTask"}, {"id": "StatusInquiryMailTask", "label": "StatusInquiryMailTask", "shape": "dot", "title": "StatusInquiryMailTask"}, {"id": "Task", "label": "Task", "shape": "dot", "title": "Task"}, {"id": "TimedHoldTask", "label": "TimedHoldTask", "shape": "dot", "title": "TimedHoldTask"}, {"id": "TranscriptionTask", "label": "TranscriptionTask", "shape": "dot", "title": "TranscriptionTask"}, {"id": "TranslationTask", "label": "TranslationTask", "shape": "dot", "title": "TranslationTask"}, {"id": "UnaccreditedRepColocatedTask", "label": "UnaccreditedRepColocatedTask", "shape": "dot", "title": "UnaccreditedRepColocatedTask"}, {"id": "TrackVeteranTask", "label": "TrackVeteranTask", "shape": "dot", "title": "TrackVeteranTask"}, {"id": "TranslationColocatedTask", "label": "TranslationColocatedTask", "shape": "dot", "title": "TranslationColocatedTask"}, {"id": "VeteranRecordRequest", "label": "VeteranRecordRequest", "shape": "dot", "title": "VeteranRecordRequest"}]);
@@ -54,17 +54,17 @@
         data = {nodes: nodes, edges: edges};
 
         var options = {"nodes": {"size": 10}, "edges": {"arrows": {"to": {"enabled": true, "scaleFactor": 1}}, "color": {"inherit": true}, "scaling": {"label": {"max": 77, "drawThreshold": 10}}, "smooth": false}, "physics": {"barnesHut": {"gravitationalConstant": -10200, "centralGravity": 0.05, "springLength": 135, "springConstant": 0.035, "damping": 0.39, "avoidOverlap": 0.65}, "maxVelocity": 42, "minVelocity": 0.75, "timestep": 0.34}};
-        
-        
 
-        
+
+
+
 
         network = new vis.Network(container, data, options);
 
-        
 
 
-        
+
+
 
         return network;
 
