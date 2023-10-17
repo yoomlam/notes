@@ -2,5 +2,8 @@
 
 start(){
 	source .secure
-	docker run -p 8888:8888 -v `pwd`:/home/jovyan/on_host --env ETL_CONNECT_URL --env REDSHIFT_CONNECT_URL --env REPLICA_CONNECT_URL jupyter/scipy-notebook
+	setEnv
+	docker run -p 8888:8888 -v `pwd`:/home/jovyan/on_host --rm --name dm-jupyter-local \
+		--env REPLICA_CONNECT_URL --env VACOLS_REPLICA_CONNECT_URL --env ETL_CONNECT_URL --env REDSHIFT_CONNECT_URL \
+		datametrics/jupyter
 }
